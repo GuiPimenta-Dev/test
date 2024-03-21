@@ -97,9 +97,9 @@ class APIGateway:
     def create_docs(self, authorizer):
         s3_integration_role = iam.Role(
             self.scope,
-            f"{self.context.stage}-{self.context.name}-API-Gateway-S3-Integration-Role-{str(uuid.uuid4())}",
+            f"{self.context.stage}-{str(uuid.uuid4())}-API-Gateway-S3-Integration-Role",
             assumed_by=iam.ServicePrincipal("apigateway.amazonaws.com"),
-            role_name=f"{self.context.stage}-{self.context.name}-API-Gateway-S3-Integration-Role",
+            role_name=f"{str(uuid.uuid4())}-{self.context.name}-API-Gateway-S3",
         )
 
         s3_integration_role.add_to_policy(
