@@ -13,8 +13,7 @@ class DeployStage(cdk.Stage):
 
         services = Services(scope, context)
 
-        authorizers = [
-        ]
+        authorizers = []
 
         functions = [
             HelloWorldConfig(services),

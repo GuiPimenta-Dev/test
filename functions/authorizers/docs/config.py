@@ -1,5 +1,6 @@
 from infra.services import Services
 
+
 class DocsConfig:
     def __init__(self, services: Services) -> None:
 
@@ -7,7 +8,7 @@ class DocsConfig:
             name="Dc",
             path="./functions/authorizers",
             description="Function used to authorize the docs endpoints",
-            directory="docs"
+            directory="docs",
         )
 
         services.api_gateway.create_authorizer(function, name="docs", default=False)
