@@ -1,4 +1,3 @@
-import uuid
 from aws_cdk import Duration
 from aws_cdk import aws_apigateway as apigateway
 from aws_cdk import aws_iam as iam
@@ -94,12 +93,15 @@ class APIGateway:
             )
         return resource
 
-    def create_docs(self, authorizer):
+    def create_docs(self, enabled, authorizer):
+        if not enabled:
+            return
+        
         s3_integration_role = iam.Role(
             self.scope,
-            f"{self.context.stage}-{str(uuid.uuid4())}-API-Gateway-S3-Integration-Role",
+            "api-gateway-s3",
             assumed_by=iam.ServicePrincipal("apigateway.amazonaws.com"),
-            role_name=f"{str(uuid.uuid4())}-{self.context.name}-API-Gateway-S3",
+            role_name=f"{self.context.stage}-{self.context.name}-API-Gateway-S3-Integration-Role",
         )
 
         s3_integration_role.add_to_policy(

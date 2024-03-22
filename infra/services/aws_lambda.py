@@ -1,8 +1,6 @@
 from aws_cdk import Duration
 from aws_cdk.aws_lambda import Code, Function, Runtime
 from lambda_forge import Path
-import random
-import string
 
 
 class AWSLambda:
@@ -25,10 +23,9 @@ class AWSLambda:
             if directory
             else "src.main.lambda_handler"
         )
-        id_ = "".join(random.choices(string.ascii_lowercase + string.digits, k=5))
         function = Function(
             scope=self.scope,
-            id=f"{self.context.stage}-{self.context.name}-{name}",
+            id=name,
             description=description,
             function_name=f"{self.context.stage}-{self.context.name}-{name}",
             runtime=Runtime.PYTHON_3_9,

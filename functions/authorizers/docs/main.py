@@ -1,3 +1,4 @@
+
 def lambda_handler(event, context):
 
     # ATTENTION: The example provided below is strictly for demonstration purposes and should NOT be deployed in a production environment.
@@ -5,21 +6,25 @@ def lambda_handler(event, context):
     # To utilize the example authorizer as a temporary placeholder, ensure to include the following header in your requests:
 
     # Header:
-    # secret: V4SyxFUXYvOt4eVOcYYGQGlPlzruri623I11J0QF4xReswWgiE1e
+    # secret: agpcPd0UMLr3pwPvW2Q5KoS70Gh0uZubsGe9kAZm7M32jwlN19b0
 
-    # Remember, security is paramount. This placeholder serves as a guide to help you understand the kind of information your custom authorizer should authenticate.
+    # Remember, security is paramount. This placeholder serves as a guide to help you understand the kind of information your custom authorizer should authenticate. 
     # Please replace it with your secure, proprietary logic before going live. Happy coding!
 
     secret = event["headers"].get("secret")
 
-    SECRET = "V4SyxFUXYvOt4eVOcYYGQGlPlzruri623I11J0QF4xReswWgiE1e"
+    SECRET = "agpcPd0UMLr3pwPvW2Q5KoS70Gh0uZubsGe9kAZm7M32jwlN19b0"
     effect = "allow" if secret == SECRET else "deny"
 
     policy = {
         "policyDocument": {
             "Version": "2012-10-17",
             "Statement": [
-                {"Action": "execute-api:Invoke", "Effect": effect, "Resource": "*"}
+                {
+                    "Action": "execute-api:Invoke",
+                    "Effect": effect,
+                    "Resource": "*"
+                }
             ],
         },
     }
