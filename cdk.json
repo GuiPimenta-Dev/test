@@ -47,6 +47,7 @@
         },
         "bucket": "gui-docs",
         "coverage": 80,
+        "base_url": "",
         "dev": {
             "arns": {}
         },

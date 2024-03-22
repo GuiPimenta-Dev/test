@@ -25,7 +25,7 @@ class AWSLambda:
         )
         function = Function(
             scope=self.scope,
-            id=f"{self.context.stage}-{self.context.name}-{name}",
+            id=name,
             description=description,
             function_name=f"{self.context.stage}-{self.context.name}-{name}",
             runtime=Runtime.PYTHON_3_9,

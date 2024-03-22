@@ -20,6 +20,7 @@ class DevStack(cdk.Stack):
                 "Synth",
                 input=source,
                 install_commands=[
+                    "pip install lambda-forge --extra-index-url https://pypi.org/simple --extra-index-url https://test.pypi.org/simple/",
                     "pip install aws-cdk-lib",
                     "npm install -g aws-cdk",
                 ],

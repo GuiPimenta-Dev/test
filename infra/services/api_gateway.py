@@ -93,10 +93,13 @@ class APIGateway:
             )
         return resource
 
-    def create_docs(self, authorizer):
+    def create_docs(self, enabled, authorizer):
+        if not enabled:
+            return
+        
         s3_integration_role = iam.Role(
             self.scope,
-            f"{self.context.stage}-{self.context.name}-API-Gateway-S3-Integration-Role",
+            "api-gateway-s3",
             assumed_by=iam.ServicePrincipal("apigateway.amazonaws.com"),
             role_name=f"{self.context.stage}-{self.context.name}-API-Gateway-S3-Integration-Role",
         )
